@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/shop/shop",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "聚宝盆",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/shop/shop",
+        "iconPath": "image/shop.png",
+        "selectedIconPath": "image/shop_select.png",
+        "text": "市场"
+      },
+      {
+        "pagePath": "pages/shop/shop",
+        "iconPath": "image/repo.png",
+        "selectedIconPath": "image/repo_select.png",
+        "text": "仓库"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "iconPath": "image/setting.png",
+        "selectedIconPath": "image/setting_select.png",
+        "text": "设置"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

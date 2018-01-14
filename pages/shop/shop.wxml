@@ -1,0 +1,53 @@
+<view>
+  <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+    <view class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav" wx:for="{{shopList}}" style="width: {{navWidth}}%;">{{item.name}}</view>
+  </scroll-view>
+  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
+    <swiper-item wx:for="{{shopList}}" wx:for-index="shopIndex" wx:for-item="shopItem">
+      <scroll-view scroll-y="true" class="scoll-h">
+        <block wx:for="{{shopItem.goods}}" wx:for-index="goodsIndex" wx:for-item="goodsItem">
+          <view class="item-ans" data-shop="{{shopIndex}}" data-goods="{{goodsIndex}}" bindtap="detail">
+            <view class="avatar">
+              <image class="img" src="{{goodsItem.img}}"></image>
+            </view>
+            <view class="expertInfo">
+              <view class="name">{{goodsItem.name}}</view>
+              <view class="stock">库存：{{goodsItem.stock}}</view>              
+              <view class="price">价格：{{goodsItem.price}}</view>
+              <view class="tag">{{goodsItem.tag}}</view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+
+  <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{modalHidden}}"></view>
+  <view class="modal-dialog" wx:if="{{modalHidden}}">
+    <view class="modal-title">买卖</view>
+    <view class="modal-content">
+    <view class="expertInfo">
+    <view class="stock">剩余空间：{{space}}</view>              
+    <view class="price">剩余金钱：{{money}}</view>
+    </view>
+      <view class="item-ans">
+      <view class="avatar">
+        <image class="img" src="{{img}}"></image>
+      </view>
+      <view class="expertInfo">
+        <view class="name">{{name}}</view>
+        <view class="price">价格：{{price}}</view>
+        <view class="tag">{{tag}}</view>
+      </view>
+      </view>
+      <slider value="{{curNum}}" max="{{maxNum}}" step="1" show-value="true" bindchanging="count"/>
+    </view>
+    <view class="modal-footer">
+      <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+      <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+    </view>
+  </view>
+
+
+
+</view>
